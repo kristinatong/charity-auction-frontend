@@ -2,22 +2,39 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SignOn from './components/SignOn'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import HomePage from './components/HomePage'
 
+const USERS_API_ENDPOINT = "http://localhost:3001/api/v1/users"
+const AUCTIONS_API_ENDPOINT = "http://localhost:3001/api/v1/auctions"
 
 class App extends Component {
   state = {
     users:[],
-    currentUser:{username:'kt@aol.com',password:'123'}, // *** REMEMBER TO REMOVE THIS LATER
+    currentUser: {"id":1,"name":"kristina","email":"a@aol.com","password":"password","prof_pic":"tbd","created_at":"2018-10-19T16:24:38.983Z","updated_at":"2018-10-19T16:24:38.983Z"}, // *** REMEMBER TO REMOVE THIS LATER
+    auctions: []
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/v1/users')
+    fetch(USERS_API_ENDPOINT)
     .then(resp => resp.json())
     .then(userArray => {
-      this.setState({users:userArray})
+      this.setState({
+        users:userArray
+      })
     })
+    fetch(AUCTIONS_API_ENDPOINT)
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        auctions:data
+      })
+    })
+
+
+
+
+
+
   }
 
   handleSignOn = (username,password) => {
@@ -32,17 +49,41 @@ class App extends Component {
     }
   }
 
+  handleNewAuction = (auctionObj) =>{
+    let newAuction = {...auctionObj, seller_id:this.state.currentUser.id}
+    fetch(AUCTIONS_API_ENDPOINT,{
+      method: "POST",
+
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify(
+        newAuction
+      )
+    }).then(r => r.json())
+      .then(data=>{
+        this.setState({
+          auctions: data
+        })
+      })
+
+
+
+}
+
+  //{item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:1}
+
   render() {
-    console.log(this.state.currentUser)
+    console.log(this.state)
     return (
-      <Router>
+
         <div>
-          {!this.state.currentUser ? <SignOn handleSignOn={this.handleSignOn}/> : <HomePage />}
+          {!this.state.currentUser ? <SignOn handleSignOn={this.handleSignOn}/> : <HomePage handleNewAuction={this.handleNewAuction} state={this.state}/>}
 
 
 
         </div>
-      </Router>
+
     );
   }
 }
