@@ -26,7 +26,9 @@ class HomePage extends React.Component{
         <div>
           <NavBar />
           <Route exact path = "/" render= {this.homeRender}/>
-          <Route exact path = "/auctions" render= {() => <AuctionsList auctions={this.props.state.auctions} />}/>
+          <Route exact path = "/auctions" render= {() => <AuctionsList auctions={this.props.state.auctions}
+           handleSelect = {this.props.handleSelect}
+           selectedAuction = {this.props.state.selectedAuction}/>}/>
           <Route exact path = "/users" render= {() =>(<h1>These are users</h1>)}/>
           <Route exact path = "/create_new_auction" render= {() => <NewAuctionForm handleNewAuction={this.props.handleNewAuction}/>}/>
         </div>

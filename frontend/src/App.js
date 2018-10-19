@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     users:[],
     currentUser: {"id":1,"name":"kristina","email":"a@aol.com","password":"password","prof_pic":"tbd","created_at":"2018-10-19T16:24:38.983Z","updated_at":"2018-10-19T16:24:38.983Z"}, // *** REMEMBER TO REMOVE THIS LATER
-    auctions: []
+    auctions: [],
+    selectedAuction: {}
   }
 
   componentDidMount(){
@@ -29,12 +30,6 @@ class App extends Component {
         auctions:data
       })
     })
-
-
-
-
-
-
   }
 
   handleSignOn = (username,password) => {
@@ -66,19 +61,28 @@ class App extends Component {
           auctions: data
         })
       })
+  }
 
-
-
-}
+  handleSelect = (auctionObj) => {
+     this.setState({
+       selectedAuction:auctionObj
+     })
+  }
 
   //{item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:1}
 
   render() {
-    console.log(this.state)
+    console.log(this.state.selectedAuction)
     return (
 
         <div>
-          {!this.state.currentUser ? <SignOn handleSignOn={this.handleSignOn}/> : <HomePage handleNewAuction={this.handleNewAuction} state={this.state}/>}
+          {!this.state.currentUser ? <SignOn handleSignOn={this.handleSignOn}/> :
+
+          <HomePage
+           handleNewAuction={this.handleNewAuction}
+           state={this.state}
+           handleSelect = {this.handleSelect}
+           />}
 
 
 

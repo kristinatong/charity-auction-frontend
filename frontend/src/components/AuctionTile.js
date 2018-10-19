@@ -1,20 +1,33 @@
 import React from "react"
 import AuctionCard from "./AuctionCard"
-import { Image, Item } from 'semantic-ui-react'
+import { Grid, Image, Item } from 'semantic-ui-react'
 
 const AuctionTile = (props) => {
 
+  const handleClick = (event) => {
+    props.handleSelect(props.auctionObj)
+
+  }
+
+
+
   return(
-    <Item>
+
+
+
+    <Item onClick={handleClick}>
 
       <Item.Content>
-        <Item.Header>{props.auctionElement.item_name}</Item.Header>
+        <Item.Header>{props.auctionObj.item_name}</Item.Header>
         <Item.Meta>Description</Item.Meta>
         <Item.Description>
-        {props.auctionElement.item_description}
+        {props.auctionObj.item_description}
         </Item.Description>
       </Item.Content>
     </Item>
+
+
+
   )
 }
 
