@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import SignOn from './components/SignOn'
 import HomePage from './components/HomePage'
-import SignOn from './signUp'
 
 const USERS_API_ENDPOINT = "http://localhost:3000/api/v1/users"
 const AUCTIONS_API_ENDPOINT = "http://localhost:3000/api/v1/auctions"
@@ -11,15 +10,7 @@ const AUCTIONS_API_ENDPOINT = "http://localhost:3000/api/v1/auctions"
 class App extends Component {
   state = {
     users: [],
-    currentUser: {
-      "id": 2,
-      "name": "kristina",
-      "email": "a@aol.com",
-      "password": "password",
-      "prof_pic": "tbd",
-      "created_at": "2018-10-19T16:24:38.983Z",
-      "updated_at": "2018-10-19T16:24:38.983Z"
-    }, // *** REMEMBER TO REMOVE THIS LATER
+    currentUser: null,
     auctions: [],
     selectedAuction: null
   }
@@ -43,6 +34,19 @@ class App extends Component {
       this.setState({currentUser: authenticatedUser})
 
     }
+  }
+
+  handleCreateNewUser = (newUser) => {
+    fetch(USERS_API_ENDPOINT, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    }).then(resp => resp.json())
+    .then(newlyCreatedUser => {
+      console.log(newlyCreatedUser)
+    })
   }
 
   handleNewAuction = (auctionObj) => {
@@ -116,7 +120,7 @@ class App extends Component {
     return (<div>
       {
         !this.state.currentUser
-          ? <SignOn handleSignOn={this.handleSignOn}/>
+          ? <SignOn handleCreateNewUser={this.handleCreateNewUser} handleSignOn={this.handleSignOn}/>
           : <HomePage handleDeleteAuction={this.handleDeleteAuction} handleIncremementBid={this.handleIncremementBid} handleNewAuction={this.handleNewAuction} state={this.state} handleSelect={this.handleSelect}/>
       }
 

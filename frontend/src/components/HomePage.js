@@ -5,6 +5,7 @@ import NavBar from "./NavBar"
 import AuctionsList from "./AuctionsList"
 import NewAuctionForm from "./NewAuctionForm"
 
+
 class HomePage extends React.Component{
 
 
@@ -25,6 +26,7 @@ class HomePage extends React.Component{
         <div className="background-image">
           <NavBar />
           <Route exact path = "/" render= {this.homeRender}/>
+
           <Route exact path = "/auctions" render= {() => <AuctionsList handleDeleteAuction={this.props.handleDeleteAuction} currentUser={this.props.state.currentUser} handleIncremementBid={this.props.handleIncremementBid} auctions={this.props.state.auctions}
            handleSelect = {this.props.handleSelect}
            selectedAuction = {this.props.state.selectedAuction}/>}/>
