@@ -20,17 +20,18 @@ User.create({name: "Olivia", email:"justin4@aol.com", password:"password", prof_
 puts "done making users"
 
 puts "making auctions"
-Auction.create({item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:1})
-Auction.create({item_name:"item",item_description:"desc",item_pic:"tbd", seller_id:1})
-Auction.create({item_name:"flute",item_description:"desc",item_pic:"tbd", seller_id:1})
-Auction.create({item_name:"tuba",item_description:"desc",item_pic:"tbd", seller_id:1})
-Auction.create({item_name:"trumpet",item_description:"desc",item_pic:"tbd", seller_id:1})
+Auction.create({item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:User.first.id, start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,11,23,4,5,6)})
+Auction.create({item_name:"item",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2019,10,23,4,5,6)})
+Auction.create({item_name:"flute",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
+Auction.create({item_name:"tuba",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
+Auction.create({item_name:"trumpet",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
+
 puts "done making auctions"
 
 puts "making bids"
-Bid.create({amount:10,bidder_id:2,auction_id:1})
-Bid.create({amount:10,bidder_id:1,auction_id:2})
-Bid.create({amount:10,bidder_id:3,auction_id:4})
-Bid.create({amount:10,bidder_id:5,auction_id:2})
-Bid.create({amount:10,bidder_id:4,auction_id:3})
+Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
+Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
+Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
+Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
+Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.last.id})
 puts "done making bids"

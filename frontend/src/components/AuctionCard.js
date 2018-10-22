@@ -1,113 +1,103 @@
 import React from "react"
-import { Card, Grid, Image, Item, Form, Button, Input, Label, Table, Header, Icon, Segment } from 'semantic-ui-react'
-
-
-
+import {
+  Card,
+  Grid,
+  Image,
+  Item,
+  Form,
+  Button,
+  Input,
+  Label,
+  Table,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react'
 
 const AuctionCard = (props) => {
   const handleIncremementBid = (event) => {
     event.preventDefault()
-    props.handleIncremementBid(event.target.bid.value,props.item)
+    props.handleIncremementBid(event.target.bid.value, props.item)
     event.target.reset()
   }
 
-  const renderTable = () => {
-    return(
-  <Table basic='very' celled collapsing>
-    <Table.Header>
-      <Table.Row>
-        <Table.HeaderCell>Employee</Table.HeaderCell>
-        <Table.HeaderCell>Correct Guesses</Table.HeaderCell>
-      </Table.Row>
-    </Table.Header>
+  const tableRow = (bid) => {
+    return (<Table.Row key={bid.id}>
+      <Table.Cell>
+        <Header as='h4' image="image">
+          <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded="rounded" size='mini'/>
+          <Header.Content>
+            {bid.bidder.name}
+          </Header.Content>
+        </Header>
+      </Table.Cell>
+      <Table.Cell>${bid.amount}</Table.Cell>
+      <Table.Cell>{bid.created_at}</Table.Cell>
+    </Table.Row>)
+  }
 
-    <Table.Body>
-      <Table.Row>
-        <Table.Cell>
-          <Header as='h4' image>
-            <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-            <Header.Content>
-              Lena
-              <Header.Subheader>Human Resources</Header.Subheader>
-            </Header.Content>
-          </Header>
-        </Table.Cell>
-        <Table.Cell>22</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          <Header as='h4' image>
-            <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-            <Header.Content>
-              Matthew
-              <Header.Subheader>Fabric Design</Header.Subheader>
-            </Header.Content>
-          </Header>
-        </Table.Cell>
-        <Table.Cell>15</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          <Header as='h4' image>
-            <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-            <Header.Content>
-              Lindsay
-              <Header.Subheader>Entertainment</Header.Subheader>
-            </Header.Content>
-          </Header>
-        </Table.Cell>
-        <Table.Cell>12</Table.Cell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>
-          <Header as='h4' image>
-            <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded size='mini' />
-            <Header.Content>
-              Mark
-              <Header.Subheader>Executive</Header.Subheader>
-            </Header.Content>
-          </Header>
-        </Table.Cell>
-        <Table.Cell>11</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table>
-)
+  const timeRemaining = () => {
+    const endDate = new Date(props.item.end_date);
+    const dateNow = new Date()
+    const timeRemaining = Math.round((endDate - dateNow)/((1000)*(3600)))
+
+    if(timeRemaining > 24){
+      const days = Math.round(timeRemaining/24)
+      const hours = timeRemaining - (days*24)
+      return `${days} days, ${hours} hours`
+    }else if(timeRemaining <= 24 && timeRemaining > 1){
+      return `${timeRemaining} hours`
+    }else{
+      return `${timeRemaining*60} minutes`
+    }
+
+  }
+
+  const renderTable = () => {
+    return (<Table basic='very' celled="celled" collapsing="collapsing">
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Bidder</Table.HeaderCell>
+          <Table.HeaderCell>Amount</Table.HeaderCell>
+          <Table.HeaderCell>Time</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+      {props.item.bids.length < 1 ? null: props.item.bids.sort((a,b) => {return b.amount - a.amount}).map(bid => tableRow(bid))}
+      </Table.Body>
+    </Table>)
+  }
+
+  const renderForm = () => {
+    if(props.item.seller.id !== props.currentUser.id){
+      return (<Form onSubmit={handleIncremementBid}>
+        <Form.Field>
+          <label>Bid</label>
+          <Input labelPosition='right' type='text' placeholder='Amount'>
+            <Label basic="basic">$</Label>
+            <Form.Input width={2} name='bid' type='number'/>
+          </Input><br/><br/>
+          <Button type='submit'>
+            Submit
+          </Button>
+        </Form.Field>
+      </Form>)
+    }else{
+      return(<Button onClick={(event) => props.handleDeleteAuction(event,props.item.id)}>Delete</Button>)
+    }
   }
 
   console.log(props)
-  return(
-      <Segment centered color='white'>
-       <Header as='h2' icon textAlign='center'>
-         <Icon name='gavel' circular />
-         <Header.Content>Bids</Header.Content>
-       </Header>
-    {/* <Card>
-      <Card.Header>
-      {props.item.item_name}
-      </Card.Header>
-
-      <Card.Description>
-        {props.item.item_description} */}
-
-        {renderTable()}
-
-        <Form onSubmit={handleIncremementBid}>
-          <Form.Field>
-            <label>Bid</label>
-            <Input labelPosition='right' type='text' placeholder='Amount'>
-              <Label basic>$</Label>
-              <Form.Input width={2} name='bid' type='number'/>
-              {/* <Label>.00</Label> */}
-            </Input>
-            <Button type='submit'> Submit </Button>
-          </Form.Field>
-        </Form>
-      {/* </Card.Description>
-    </Card> */}
-</Segment>
-  )
+  return (<Segment centered='true' color='blue'>
+    <Header as='h2' icon="icon" textAlign='center'>
+      <Icon name='gavel' circular="circular"/>
+      <Header.Content>{props.item.item_name}</Header.Content>
+      <Header.Content sub>Description: {props.item.item_description}</Header.Content><br/>
+      <Header.Content sub>Time Remaining: {timeRemaining()}</Header.Content>
+    </Header>
+    {renderTable()}
+    {renderForm()}
+  </Segment>)
 }
-
 
 export default AuctionCard

@@ -10,6 +10,18 @@ class Api::V1::AuctionsController < ApplicationController
     render json: @auctions
   end
 
+  # def show
+  #   @auction = Auction.find(params[:id])
+  #   @auctions = Auction.all
+  #   render json: @auctions
+  # end
+
+  def destroy
+    @auction = Auction.find(params[:id])
+    @auction.destroy
+    @auctions = Auction.all
+    render json: @auctions
+  end
 
 # Auction.create({item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:1})
     def auction_params

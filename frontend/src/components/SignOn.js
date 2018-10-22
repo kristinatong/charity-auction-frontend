@@ -8,7 +8,7 @@ class SignOn extends React.Component {
 
   handleSignOn = (event) => {
     event.preventDefault()
-    
+
     this.props.handleSignOn(event.target.username.value,event.target.password.value)
   }
 

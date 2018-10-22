@@ -7,15 +7,7 @@ export default class AuctionsList extends React.Component{
 
   renderCard = () => {
     return(
-     //  <Card>
-     //   <Card.Content>
-     //     <div className='ui placeholder'>
-     //       <div className='rectangular image' />
-     //     </div>
-     //   </Card.Content>
-     // </Card>
-
-     <Segment color='white'>
+     <Segment color='blue'>
       <Header as='h2' icon textAlign='center'>
         <Icon name='gavel' circular />
         <Header.Content>Friends</Header.Content>
@@ -47,7 +39,7 @@ export default class AuctionsList extends React.Component{
         </Grid.Column>
 
         <Grid.Column width={10}>
-          {this.props.selectedAuction ? <AuctionCard handleIncremementBid={this.props.handleIncremementBid} item={this.props.selectedAuction}/> : this.renderCard()}
+          {this.props.selectedAuction ? <AuctionCard handleDeleteAuction={this.props.handleDeleteAuction} currentUser={this.props.currentUser} handleIncremementBid={this.props.handleIncremementBid} item={this.props.selectedAuction}/> : this.renderCard()}
         </Grid.Column>
 
 
