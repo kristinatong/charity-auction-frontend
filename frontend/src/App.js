@@ -10,7 +10,7 @@ const AUCTIONS_API_ENDPOINT = "http://localhost:3000/api/v1/auctions"
 class App extends Component {
   state = {
     users: [],
-    currentUser: null,
+    currentUser: {"id":36,"name":"kristina","email":"a@aol.com","password":"password","prof_pic":"tbd","created_at":"2018-10-22T22:28:58.968Z","updated_at":"2018-10-22T22:28:58.968Z"},
     auctions: [],
     selectedAuction: null
   }

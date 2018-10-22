@@ -22,7 +22,14 @@ const AuctionCard = (props) => {
   }
 
   const tableRow = (bid) => {
-    return (<Table.Row key={bid.id}>
+    let createDate = new Date(bid.created_at)
+     // debugger
+
+
+
+    return (
+
+      <Table.Row key={bid.id}>
       <Table.Cell>
         <Header as='h4' image="image">
           <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded="rounded" size='mini'/>
@@ -32,7 +39,7 @@ const AuctionCard = (props) => {
         </Header>
       </Table.Cell>
       <Table.Cell>${bid.amount}</Table.Cell>
-      <Table.Cell>{bid.created_at}</Table.Cell>
+      <Table.Cell>{`${createDate.getHours()}:${createDate.getMinutes()}:${createDate.getSeconds()} on ${createDate.getMonth()+1}/${createDate.getDate()}/${createDate.getYear()+1900}`}</Table.Cell>
     </Table.Row>)
   }
 
@@ -54,18 +61,22 @@ const AuctionCard = (props) => {
   }
 
   const renderTable = () => {
-    return (<Table basic='very' celled="celled" collapsing="collapsing">
+    return (
+
+      <Table color="teal"   celled="celled" collapsing="collapsing">
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Bidder</Table.HeaderCell>
-          <Table.HeaderCell>Amount</Table.HeaderCell>
-          <Table.HeaderCell>Time</Table.HeaderCell>
+          <Table.HeaderCell width={3}>Bidder</Table.HeaderCell>
+          <Table.HeaderCell width={3}>Amount</Table.HeaderCell>
+          <Table.HeaderCell width={3}>Time</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
       {props.item.bids.length < 1 ? null: props.item.bids.sort((a,b) => {return b.amount - a.amount}).map(bid => tableRow(bid))}
       </Table.Body>
-    </Table>)
+    </Table>
+
+    )
   }
 
   const renderForm = () => {
@@ -92,8 +103,8 @@ const AuctionCard = (props) => {
     <Header as='h2' icon="icon" textAlign='center'>
       <Icon name='gavel' circular="circular"/>
       <Header.Content>{props.item.item_name}</Header.Content>
-      <Header.Content sub>Description: {props.item.item_description}</Header.Content><br/>
-      <Header.Content sub>Time Remaining: {timeRemaining()}</Header.Content>
+      <Header.Content as="h3" sub>Description: {props.item.item_description}</Header.Content><br/>
+      <Header.Content as="h3" textAlign="right" sub>Time Remaining: {timeRemaining()}</Header.Content>
     </Header>
     {renderTable()}
     {renderForm()}

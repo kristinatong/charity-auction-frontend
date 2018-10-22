@@ -20,6 +20,7 @@ export default class AuctionsList extends React.Component{
 
   render(){
   const divStyle = {
+    height: "100%",
     overflow:"scroll"
   }
 
@@ -27,8 +28,10 @@ export default class AuctionsList extends React.Component{
       <div>
         <Grid celled>
 
+
+
         <Grid.Column width={6} >
-        <Item.Group divided style={divStyle}>
+        <Item.Group divided >
 
           {this.props.auctions.map((auctionObj)=>{
             return(<AuctionTile key={auctionObj.id} auctionObj={auctionObj} handleSelect = {this.props.handleSelect}/>)
@@ -38,10 +41,11 @@ export default class AuctionsList extends React.Component{
         </Item.Group>
         </Grid.Column>
 
+
         <Grid.Column width={10}>
           {this.props.selectedAuction ? <AuctionCard handleDeleteAuction={this.props.handleDeleteAuction} currentUser={this.props.currentUser} handleIncremementBid={this.props.handleIncremementBid} item={this.props.selectedAuction}/> : this.renderCard()}
         </Grid.Column>
-
+        
 
         </Grid>
       </div>

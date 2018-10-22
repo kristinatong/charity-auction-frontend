@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
+require "faker"
+
 User.destroy_all
 Bid.destroy_all
 Auction.destroy_all
@@ -20,18 +22,19 @@ User.create({name: "Olivia", email:"justin4@aol.com", password:"password", prof_
 puts "done making users"
 
 puts "making auctions"
-Auction.create({item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:User.first.id, start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,11,23,4,5,6)})
-Auction.create({item_name:"item",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2019,10,23,4,5,6)})
-Auction.create({item_name:"flute",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
-Auction.create({item_name:"tuba",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
-Auction.create({item_name:"trumpet",item_description:"desc",item_pic:"tbd", seller_id:User.first.id,start_date: DateTime.new(2018,10,23,4,5,6), end_date: DateTime.new(2018,10,23,4,5,6)})
+
+20.times do
+Auction.create({item_name:Faker::Dessert.variety,item_description:Faker::GreekPhilosophers.quote, item_pic:"tbd", seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
+
+end
 
 puts "done making auctions"
 
 puts "making bids"
-Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
-Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
-Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
-Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.first.id})
-Bid.create({amount:10,bidder_id:User.first.id,auction_id:Auction.last.id})
+
+50.times do
+
+Bid.create({amount:rand(1..100), bidder_id:User.all.sample.id, auction_id:Auction.all.sample.id})
+
+end
 puts "done making bids"
