@@ -22,6 +22,14 @@
   color: #61dafb;
 }
 
+.background-image {
+    background-image: url("https://images.unsplash.com/photo-1514286969571-5142af56b991?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=12f250139fca2206e67f482d44afe14a&auto=format&fit=crop&w=1350&q=80");
+    padding: 0 0 50% 0;
+    background-size: cover;
+    height: 100px;
+    background-position: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -10,25 +10,24 @@ import {Container,
   Icon,
   Sidebar } from "semantic-ui-react"
 
-
 const NavBar = () => {
   return(
     <Menu inverted>
       <Menu.Item>
         <NavLink
-          to= "/">Home
+          to= "/"><Icon name='home'/>&nbsp;Home
         </NavLink>
     </Menu.Item>
 
     <Menu.Item>
       <NavLink
-        to= "/auctions">Auctions
+        to= "/auctions"><i className="fas fa-gavel"/>&nbsp;&nbsp;Auctions
       </NavLink>
     </Menu.Item>
 
     <Menu.Item>
       <NavLink
-        to= "/users">Users
+        to= "/users"><Icon name='users'/>Users
         </NavLink>
     </Menu.Item>
 
@@ -38,11 +37,21 @@ const NavBar = () => {
         </NavLink>
     </Menu.Item>
 
+    <div class="ui right dropdown item"/>
+
+    <Dropdown item text='Account' direction='left'>
+          <Dropdown.Menu>
+            <Dropdown.Item icon='user' text='Edit Profile' />
+              <Dropdown.Item><i className="fas fa-gavel"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                <NavLink to= "/create_new_auction">Create Auction</NavLink>
+              </Dropdown.Item>
+            <Dropdown.Item icon='log out' text='Logout' />
+          </Dropdown.Menu>
+        </Dropdown>
     </Menu>
 
   )
 }
-
 
 export default NavBar
 

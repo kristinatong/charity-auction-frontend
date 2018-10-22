@@ -5,7 +5,6 @@ import NavBar from "./NavBar"
 import AuctionsList from "./AuctionsList"
 import NewAuctionForm from "./NewAuctionForm"
 
-
 class HomePage extends React.Component{
 
 
@@ -23,7 +22,7 @@ class HomePage extends React.Component{
   render(){
     return(
       <Router>
-        <div>
+        <div className="background-image">
           <NavBar />
           <Route exact path = "/" render= {this.homeRender}/>
           <Route exact path = "/auctions" render= {() => <AuctionsList auctions={this.props.state.auctions}
