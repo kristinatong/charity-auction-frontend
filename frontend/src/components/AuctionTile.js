@@ -3,10 +3,8 @@ import AuctionCard from "./AuctionCard"
 import { Grid, Image, Item } from 'semantic-ui-react'
 
 const AuctionTile = (props) => {
-
   const handleClick = (event) => {
     props.handleSelect(props.auctionObj)
-
   }
 
 

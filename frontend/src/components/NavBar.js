@@ -21,7 +21,7 @@ const NavBar = () => {
 
     <Menu.Item>
       <NavLink
-        to= "/auctions"><i className="fas fa-gavel"/>&nbsp;&nbsp;Auctions
+        to= "/auctions"><Icon name='gavel'/>&nbsp;Auctions
       </NavLink>
     </Menu.Item>
 
@@ -37,14 +37,12 @@ const NavBar = () => {
         </NavLink>
     </Menu.Item>
 
-    <div class="ui right dropdown item"/>
+    <div className="ui right dropdown item"/>
 
-    <Dropdown item text='Account' direction='left'>
+    <Dropdown item text='Account'>
           <Dropdown.Menu>
             <Dropdown.Item icon='user' text='Edit Profile' />
-              <Dropdown.Item><i className="fas fa-gavel"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                <NavLink to= "/create_new_auction">Create Auction</NavLink>
-              </Dropdown.Item>
+
             <Dropdown.Item icon='log out' text='Logout' />
           </Dropdown.Menu>
         </Dropdown>

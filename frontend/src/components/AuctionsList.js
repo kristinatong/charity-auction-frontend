@@ -1,20 +1,32 @@
 import React from "react"
 import AuctionTile from "./AuctionTile"
-import { Card, Grid, Image, Item } from 'semantic-ui-react'
+import { Card, Grid, Image, Item, Placeholder, Container, Header, Icon, Segment, Table} from 'semantic-ui-react'
+import AuctionCard from './AuctionCard'
 
 export default class AuctionsList extends React.Component{
 
+  renderCard = () => {
+    return(
+     //  <Card>
+     //   <Card.Content>
+     //     <div className='ui placeholder'>
+     //       <div className='rectangular image' />
+     //     </div>
+     //   </Card.Content>
+     // </Card>
 
+     <Segment color='white'>
+      <Header as='h2' icon textAlign='center'>
+        <Icon name='gavel' circular />
+        <Header.Content>Friends</Header.Content>
+      </Header>
+      <Image centered size='large' src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png' />
+    </Segment>
 
+    )
+  }
 
   render(){
-
-//     const divStyle = {
-//   position: 'fixed',
-//   right: 0
-//
-// };
-
   const divStyle = {
     overflow:"scroll"
   }
@@ -35,23 +47,8 @@ export default class AuctionsList extends React.Component{
         </Grid.Column>
 
         <Grid.Column width={10}>
-          <Card>
-            <Card.Header>
-            {this.props.selectedAuction.item_name}
-            </Card.Header>
-
-            
-
-            <Card.Description>
-              {this.props.selectedAuction.item_description}
-            </Card.Description>
-
-          </Card>
-
-
-
+          {this.props.selectedAuction ? <AuctionCard handleIncremementBid={this.props.handleIncremementBid} item={this.props.selectedAuction}/> : this.renderCard()}
         </Grid.Column>
-
 
 
         </Grid>

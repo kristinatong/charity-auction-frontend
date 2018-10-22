@@ -20,7 +20,7 @@ class App extends Component {
       "updated_at": "2018-10-19T16:24:38.983Z"
     }, // *** REMEMBER TO REMOVE THIS LATER
     auctions: [],
-    selectedAuction: {}
+    selectedAuction: null
   }
 
   componentDidMount() {
@@ -65,15 +65,34 @@ class App extends Component {
     this.setState({selectedAuction: auctionObj})
   }
 
+  handleIncremementBid = (amount,auction) =>{
+    let bidAmount = parseInt(amount)
+    let auctionId = auction.id
+    fetch('http://localhost:3000/api/v1/bids', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+        auction_id: auctionId,
+        bidder_id: this.state.currentUser.id,
+        amount: bidAmount
+      })
+    })
+  }
+
+
+
   //{item_name:"whatever",item_description:"desc",item_pic:"tbd", seller_id:1}
 
   render() {
-    console.log(this.state.selectedAuction)
+    // console.log(this.state.selectedAuction)
     return (<div>
       {
         !this.state.currentUser
           ? <SignOn handleSignOn={this.handleSignOn}/>
-          : <HomePage handleNewAuction={this.handleNewAuction} state={this.state} handleSelect={this.handleSelect}/>
+          : <HomePage handleIncremementBid={this.handleIncremementBid} handleNewAuction={this.handleNewAuction} state={this.state} handleSelect={this.handleSelect}/>
       }
 
     </div>);
