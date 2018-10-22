@@ -25,7 +25,7 @@ class HomePage extends React.Component{
         <div className="background-image">
           <NavBar />
           <Route exact path = "/" render= {this.homeRender}/>
-          <Route exact path = "/auctions" render= {() => <AuctionsList auctions={this.props.state.auctions}
+          <Route exact path = "/auctions" render= {() => <AuctionsList handleIncremementBid={this.props.handleIncremementBid} auctions={this.props.state.auctions}
            handleSelect = {this.props.handleSelect}
            selectedAuction = {this.props.state.selectedAuction}/>}/>
           <Route exact path = "/users" render= {() =>(<h1>These are users</h1>)}/>
