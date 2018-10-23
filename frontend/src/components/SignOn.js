@@ -1,110 +1,194 @@
 import React from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import {
+  Button,
+  Checkbox,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment
+} from 'semantic-ui-react'
 
 import {NavLink} from "react-router-dom"
 
-
 class SignOn extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state = {clicked:false}
+    this.state = {
+      clicked: false
+    }
   }
 
   handleSignOn = (event) => {
     event.preventDefault()
 
-    this.props.handleSignOn(event.target.username.value,event.target.password.value)
+    this.props.handleSignOn(event.target.username.value, event.target.password.value)
   }
   onNewUserClick = (event) => {
-    this.setState({clicked:!this.state.clicked})
+    this.setState({
+      clicked: !this.state.clicked
+    })
 
   }
-
 
   onNewUserSubmit = (event) => {
 
-    let newUser = {name:event.target.name.value,email:event.target.email.value,password:event.target.password.value,prof_pic:event.target.pic.value}
+    let newUser = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      prof_pic: event.target.pic.value
+    }
     this.props.handleCreateNewUser(newUser)
 
   }
 
-
-  render(){
+  render() {
     console.log(this.props)
-    if(this.state.clicked === false){
+    if (this.state.clicked === false) {
 
+      return (
+        // <div>
+        // <Form onSubmit={this.handleSignOn}>
+        //   <Form.Field>
+        //     <label>Email</label>
+        //     <input name="username" placeholder='Username'/>
+        //   </Form.Field>
+        //
+        //   <Form.Field>
+        //     <label>Password</label>
+        //     <input name="password" type="password" placeholder='Pasword'/>
+        //   </Form.Field>
+        //
+        //   <Button type='submit'>Submit</Button>
+        //
+        // </Form>
+        //
+        // <br/>
+        // <Button onClick={this.onNewUserClick}>
+        //   Create a New User
+        // </Button>
 
-    return(
-      <div>
-        <Form onSubmit={this.handleSignOn}>
-          <Form.Field>
-            <label>Email</label>
-            <input name = "username" placeholder='Username' />
-          </Form.Field>
+        <div className='login-form'>
+          <style>
+            {
+              ` body > div,
+              body > div > div,
+              body > div > div > div.login-form {
+                height: 100%;
+              }
+            `}</style>
+          <Grid textAlign='center' style={{
+              height: '100%'
+            }} verticalAlign='middle'>
+            <Grid.Column style={{
+                maxWidth: 450
+              }}>
+              <Header as='h2' color='teal' textAlign='center'>
+                <Image src='/logo.png'/>
+                Log-in to your account
+              </Header>
+              <Form size='large' onSubmit={this.handleSignOn}>
+                <Segment stacked="stacked">
+                  <Form.Input name="username" fluid="fluid" icon='user' iconPosition='left' placeholder='E-mail address'/>
+                  <Form.Input name="password" fluid="fluid" icon='lock' iconPosition='left' placeholder='Password' type='password'/>
 
-          <Form.Field>
-            <label>Password</label>
-            <input name= "password" type="password" placeholder='Pasword' />
-          </Form.Field>
+                  <Button type="submit" color='teal' fluid="fluid" size='large'>
+                    Login
+                  </Button>
+                </Segment>
+              </Form>
+              <Message>
+                New to us?
+                <a href='#' onClick={this.onNewUserClick}> Sign Up</a>
+              </Message>
+            </Grid.Column>
+          </Grid>
+        </div>
 
+      // </div>
+    )} else {
+      return (
+        // <div>
+        // <Form onSubmit={this.onNewUserSubmit}>
+        //   <Form.Field>
+        //     <label>Name</label>
+        //     <input name="name" placeholder='Username'/>
+        //   </Form.Field>
+        //
+        //   <Form.Field>
+        //     <label>Email</label>
+        //     <input name="email" placeholder='Email'/>
+        //   </Form.Field>
+        //
+        //   <Form.Field>
+        //     <label>Profile Pic URL</label>
+        //     <input name="pic" placeholder='Profile Picture'/>
+        //   </Form.Field>
+        //
+        //   <Form.Field>
+        //     <label>Password</label>
+        //     <input name="password" type="password" placeholder='Pasword'/>
+        //   </Form.Field>
+        //
+        //   <Form.Field>
+        //     <Checkbox label='I agree to the Terms and Conditions'/>
+        //   </Form.Field>
+        //
+        //   <Button type='submit'>Create User</Button>
+        //
+        // </Form>
+        // <br/>
+        // <Button onClick={this.onNewUserClick}>
+        //   Existing User Sign-in</Button>
 
+          <div className='login-form'>
+            <style>
+              {
+                ` body > div,
+                body > div > div,
+                body > div > div > div.login-form {
+                  height: 100%;
+                }
+              `}</style>
+            <Grid textAlign='center' style={{
+                height: '100%'
+              }} verticalAlign='middle'>
+              <Grid.Column style={{
+                  maxWidth: 450
+                }}>
+                <Header as='h2' color='teal' textAlign='center'>
+                  <Image src='/logo.png'/>
+                  Log-in to your account
+                </Header>
+                <Form size='large' onSubmit={this.onNewUserSubmit}>
+                  <Segment stacked="stacked">
+                    <Form.Input name="name" fluid="fluid" icon='user' iconPosition='left' placeholder='Name'/>
+                    <Form.Input name="email" fluid="fluid" icon='user' iconPosition='left' placeholder='E-mail address'/>
+                    <Form.Input name="password" fluid="fluid" icon='lock' iconPosition='left' placeholder='Password' type='password'/>
+                    <Form.Input name="pic" fluid="fluid" icon='user' iconPosition='left' placeholder='Profile Picture'/>
 
-        <Button type='submit'>Submit</Button>
+                    <Button type="submit" color='teal' fluid="fluid" size='large'>
+                      Sign Up
+                    </Button>
+                  </Segment>
+                </Form>
+                <Message>
+                  New to us?
+                  <a href='#' onClick={this.onNewUserClick}>Sign Up</a>
+                </Message>
+              </Grid.Column>
+            </Grid>
+          </div>
 
-      </Form>
-
-
-      <br/><Button onClick ={this.onNewUserClick}> Create a New User </Button>
-
-
-      </div>
+      // </div>
 
     )
-  } else {
-    return (
-      <div>
-        <Form onSubmit={this.onNewUserSubmit}>
-          <Form.Field>
-            <label>Name</label>
-            <input name = "name" placeholder='Username' />
-          </Form.Field>
 
-          <Form.Field>
-            <label>Email</label>
-            <input name = "email" placeholder='Email' />
-          </Form.Field>
-
-          <Form.Field>
-            <label>Profile Pic URL</label>
-            <input name = "pic" placeholder='Profile Picture' />
-          </Form.Field>
-
-
-          <Form.Field>
-            <label>Password</label>
-            <input name= "password" type="password" placeholder='Pasword' />
-          </Form.Field>
-
-          <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions' />
-          </Form.Field>
-
-        <Button type='submit'>Create User</Button>
-
-      </Form>
-      <br/><Button onClick ={this.onNewUserClick}> Existing User Sign-in</Button>
-
-
-      </div>
-
-
-    )
-
-
-
-
+    }
   }
-}}
+}
 
 export default SignOn
 
