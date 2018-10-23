@@ -49,6 +49,10 @@ class App extends Component {
     })
   }
 
+  handleSignOut = (event) => {
+    this.setState({currentUser: null})
+  }
+
   handleNewAuction = (auctionObj) => {
     let newAuction = {
       ...auctionObj,
@@ -121,7 +125,7 @@ class App extends Component {
       {
         !this.state.currentUser
           ? <SignOn handleCreateNewUser={this.handleCreateNewUser} handleSignOn={this.handleSignOn}/>
-          : <HomePage handleDeleteAuction={this.handleDeleteAuction} handleIncremementBid={this.handleIncremementBid} handleNewAuction={this.handleNewAuction} state={this.state} handleSelect={this.handleSelect}/>
+          : <HomePage handleSignOut={this.handleSignOut} handleDeleteAuction={this.handleDeleteAuction} handleIncremementBid={this.handleIncremementBid} handleNewAuction={this.handleNewAuction} state={this.state} handleSelect={this.handleSelect}/>
       }
 
     </div>);
