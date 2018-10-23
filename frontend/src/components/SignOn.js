@@ -7,7 +7,8 @@ import {
   Header,
   Image,
   Message,
-  Segment
+  Segment,
+  Icon
 } from 'semantic-ui-react'
 
 import {NavLink} from "react-router-dom"
@@ -86,7 +87,7 @@ class SignOn extends React.Component {
                 maxWidth: 450
               }}>
               <Header as='h2' color='teal' textAlign='center'>
-                <Image src='/logo.png'/>
+                <Icon name="gavel" />
                 Log-in to your account
               </Header>
               <Form size='large' onSubmit={this.handleSignOn}>
@@ -159,8 +160,8 @@ class SignOn extends React.Component {
                   maxWidth: 450
                 }}>
                 <Header as='h2' color='teal' textAlign='center'>
-                  <Image src='/logo.png'/>
-                  Log-in to your account
+                  <Icon name='gavel' />
+                  Create an account
                 </Header>
                 <Form size='large' onSubmit={this.onNewUserSubmit}>
                   <Segment stacked="stacked">
@@ -174,10 +175,7 @@ class SignOn extends React.Component {
                     </Button>
                   </Segment>
                 </Form>
-                <Message>
-                  New to us?
-                  <a href='#' onClick={this.onNewUserClick}>Sign Up</a>
-                </Message>
+
               </Grid.Column>
             </Grid>
           </div>

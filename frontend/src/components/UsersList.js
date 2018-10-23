@@ -18,7 +18,7 @@ const UsersList = (props) => {
     <div style={listStyle}>
       <Item.Group>
         {props.users.map((userObj)=>{
-          return <UserCard key={userObj.id} user={userObj} />
+          return <UserCard key={userObj.id} user={userObj} handleSelect={props.handleSelect}/>
         })}
 
 

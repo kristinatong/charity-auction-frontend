@@ -10,7 +10,7 @@ export default class AuctionsList extends React.Component{
      <Segment color='blue'>
       <Header as='h2' icon textAlign='center'>
         <Icon name='gavel' circular />
-        <Header.Content>Friends</Header.Content>
+        <Header.Content>Select Auction</Header.Content>
       </Header>
       <Image centered size='large' src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png' />
     </Segment>
@@ -45,7 +45,7 @@ export default class AuctionsList extends React.Component{
         <Grid.Column width={10}>
           {this.props.selectedAuction ? <AuctionCard handleDeleteAuction={this.props.handleDeleteAuction} currentUser={this.props.currentUser} handleIncremementBid={this.props.handleIncremementBid} item={this.props.selectedAuction}/> : this.renderCard()}
         </Grid.Column>
-        
+
 
         </Grid>
       </div>
