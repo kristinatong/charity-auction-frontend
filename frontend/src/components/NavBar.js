@@ -11,7 +11,16 @@ import {Container,
   Sidebar } from "semantic-ui-react"
 
 const NavBar = () => {
+
+  const NavBarStyle = {
+    position: "fixed"
+  }
+
+
+
+
   return(
+    <div>
     <Menu inverted>
       <Menu.Item>
         <NavLink
@@ -47,7 +56,7 @@ const NavBar = () => {
           </Dropdown.Menu>
         </Dropdown>
     </Menu>
-
+    </div>
   )
 }
 

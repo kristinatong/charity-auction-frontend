@@ -14,11 +14,16 @@ import {
   Segment
 } from 'semantic-ui-react'
 
+
 const AuctionCard = (props) => {
   const handleIncremementBid = (event) => {
     event.preventDefault()
     props.handleIncremementBid(event.target.bid.value, props.item)
     event.target.reset()
+  }
+
+  const cardStyle = {
+    position: "sticky"
   }
 
   const tableRow = (bid) => {
@@ -98,8 +103,10 @@ const AuctionCard = (props) => {
     }
   }
 
-  console.log(props)
-  return (<Segment centered='true' color='blue'>
+
+  return (
+    <div>
+    <Segment centered='true' color='blue'>
     <Header as='h2' icon="icon" textAlign='center'>
       <Icon name='gavel' circular="circular"/>
       <Header.Content>{props.item.item_name}</Header.Content>
@@ -108,7 +115,9 @@ const AuctionCard = (props) => {
     </Header>
     {renderTable()}
     {renderForm()}
-  </Segment>)
+  </Segment>
+  </div>
+  )
 }
 
 export default AuctionCard
