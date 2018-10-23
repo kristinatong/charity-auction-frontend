@@ -29,7 +29,7 @@ class HomePage extends React.Component{
     return(
       <Router>
         <div>
-          <NavBar />
+          <NavBar handleSignOut={this.props.handleSignOut}/>
           <Route exact path = "/" render= {this.homeRender}/>
 
           <Route exact path = "/auctions" render= {() => <AuctionsList handleDeleteAuction={this.props.handleDeleteAuction} currentUser={this.props.state.currentUser} handleIncremementBid={this.props.handleIncremementBid} auctions={this.props.state.auctions}

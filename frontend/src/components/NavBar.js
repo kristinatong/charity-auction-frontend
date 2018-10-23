@@ -10,7 +10,7 @@ import {Container,
   Icon,
   Sidebar } from "semantic-ui-react"
 
-const NavBar = () => {
+const NavBar = (props) => {
 
   const NavBarStyle = {
     position: "fixed"
@@ -52,7 +52,7 @@ const NavBar = () => {
           <Dropdown.Menu>
             <Dropdown.Item icon='user' text='Edit Profile' />
 
-            <Dropdown.Item icon='log out' text='Logout' />
+            <Dropdown.Item onClick={props.handleSignOut} icon='log out' text='Logout' />
           </Dropdown.Menu>
         </Dropdown>
     </Menu>
