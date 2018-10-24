@@ -8,7 +8,7 @@ const UsersList = (props) => {
 
  const listStyle = {
    "margin-left":"25%",
-   "margin-top":"10%"
+   "margin-top":"5%"
 
  }
 

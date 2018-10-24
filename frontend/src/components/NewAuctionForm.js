@@ -27,9 +27,12 @@ export default class NewAuctionForm extends React.Component {
   }
 
   render() {
-    return (<div className="ui two column centered grid">
+    return (
+      <div className="ui two column centered grid">
       <Form size='medium' onSubmit={this.handleFormSubmit}>
           <Form.Field>
+          <br/><br/>
+
             <label>Item Name</label>
             <input placeholder='Item Name' name="itemName"/>
           </Form.Field>
