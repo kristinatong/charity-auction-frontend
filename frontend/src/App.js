@@ -57,6 +57,7 @@ class App extends Component {
   }
 
   handleNewAuction = (auctionObj) => {
+    debugger
     let newAuction = {
       ...auctionObj,
       seller_id: this.state.currentUser.id
@@ -69,6 +70,7 @@ class App extends Component {
       },
       body: JSON.stringify(newAuction)
     }).then(r => r.json()).then(data => {
+      console.log(data)
       this.setState({auctions: data})
     })
   }

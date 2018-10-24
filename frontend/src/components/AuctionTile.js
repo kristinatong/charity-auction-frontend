@@ -7,15 +7,12 @@ const AuctionTile = (props) => {
     props.handleSelect(props.auctionObj)
   }
 
-
-
   return(
-
-
 
     <Item onClick={handleClick}>
 
       <Item.Content>
+
         <Item.Header>{props.auctionObj.item_name}</Item.Header>
         <Item.Meta>Description</Item.Meta>
         <Item.Description>

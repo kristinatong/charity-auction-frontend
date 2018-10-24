@@ -1,5 +1,16 @@
 import React from "react"
-import {Button, Checkbox, Form, TextArea} from 'semantic-ui-react'
+import {
+  Button,
+  Checkbox,
+  Form,
+  TextArea,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+  Icon
+} from 'semantic-ui-react'
 import {Link, Redirect} from "react-router-dom"
 
 export default class NewAuctionForm extends React.Component {
@@ -8,8 +19,6 @@ export default class NewAuctionForm extends React.Component {
   }
 
   handleFormSubmit = (event) => {
-
-
 
     event.preventDefault()
     let auctionObj = {
@@ -27,48 +36,50 @@ export default class NewAuctionForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="ui two column centered grid">
-      <Form size='medium' onSubmit={this.handleFormSubmit}>
-          <Form.Field>
-          <br/><br/>
+    return (<div>
 
-            <label>Item Name</label>
-            <input placeholder='Item Name' name="itemName"/>
-          </Form.Field>
+      <div className='auction-form'>
+        <style>
+          {
+            ` body > div,
+            body > div > div,
+            body > div > div > div.auction-form {
+              height: 100%;
+            }
+          `}</style>
+        <Grid textAlign='center' style={{
+            height: '100%'
+          }} verticalAlign='middle'>
+          <Grid.Column style={{
+              maxWidth: 450
+            }}>
+            <br/>
+            <Header as='h2' color='grey' textAlign='center'>
+              <Icon name="gavel" />
+              Create Auction
+            </Header>
+            <Form size='large' onSubmit={this.handleFormSubmit}>
+              <Segment stacked="stacked">
+                <Form.Input name="itemName" fluid="fluid" placeholder='Item Name'/>
+                <Form.TextArea name="description" fluid="fluid" icon='lock' iconPosition='left' placeholder='Description' />
+                <Form.Input label='Start Date' name="startDate" fluid="fluid" type='date'/>
+                <Form.Input label='End Date'name="endDate" fluid="fluid" type='date'/>
+                <Form.Input name="itemPic" fluid="fluid" placeholder='Item Photo URL'/>
+                <Button type="submit" color='grey' fluid="fluid" size='large'>
+                  Create Auction
+                </Button>
+              </Segment>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </div>
 
-          <Form.Field>
-            <label>Description</label>
-            <TextArea placeholder='Description' name="description"/>
-          </Form.Field>
+      {
+        this.state.isSubmitted
+          ? <Redirect to='/auctions'/>
+          : null
+      }
 
-          <Form.Field >
-            <label>Start Date</label>
-            <input type="date" name="startDate"/>
-          </Form.Field>
-
-          <Form.Field >
-            <label>End Date</label>
-            <input type="date" name="endDate"/>
-          </Form.Field>
-
-          <Form.Field >
-            <label>Picture</label>
-            <input placeholder='URL' name="itemPic"/>
-          </Form.Field>
-
-          <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions'/>
-          </Form.Field>
-
-
-            <Button type='submit'>
-            Create Auction</Button>
-
-      </Form>
-
-        {this.state.isSubmitted? <Redirect to = '/auctions' /> :null}
-
-    </div>)
+  </div>)
   }
 }
