@@ -50,7 +50,7 @@ const NavBar = (props) => {
 
     <Dropdown item text='Account'>
           <Dropdown.Menu>
-            <Dropdown.Item icon='user' text='Edit Profile' />
+        
 
             <Dropdown.Item onClick={props.handleSignOut} icon='log out' text='Logout' />
           </Dropdown.Menu>
