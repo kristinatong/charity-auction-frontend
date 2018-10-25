@@ -1,3 +1,6 @@
-Things that we'd like to add to the application:
+#######################
+Charity Auction APP
+#######################
 
-/ unique username requirement
+Auction House application for providing funding to charitable causes.
+Users can view existing auctions and bid on them, or create their own auctions. 
