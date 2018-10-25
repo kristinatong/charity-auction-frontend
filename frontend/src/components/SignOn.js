@@ -50,26 +50,6 @@ class SignOn extends React.Component {
     if (this.state.clicked === false) {
 
       return (
-        // <div>
-        // <Form onSubmit={this.handleSignOn}>
-        //   <Form.Field>
-        //     <label>Email</label>
-        //     <input name="username" placeholder='Username'/>
-        //   </Form.Field>
-        //
-        //   <Form.Field>
-        //     <label>Password</label>
-        //     <input name="password" type="password" placeholder='Pasword'/>
-        //   </Form.Field>
-        //
-        //   <Button type='submit'>Submit</Button>
-        //
-        // </Form>
-        //
-        // <br/>
-        // <Button onClick={this.onNewUserClick}>
-        //   Create a New User
-        // </Button>
 
         <div className='login-form'>
           <style>
@@ -86,7 +66,7 @@ class SignOn extends React.Component {
             <Grid.Column style={{
                 maxWidth: 450
               }}>
-              <Header as='h2' color='teal' textAlign='center'>
+              <Header as='h2' color='grey' textAlign='center'>
                 <Icon name="gavel" />
                 Log-in to your account
               </Header>
@@ -95,7 +75,7 @@ class SignOn extends React.Component {
                   <Form.Input name="username" fluid="fluid" icon='user' iconPosition='left' placeholder='E-mail address'/>
                   <Form.Input name="password" fluid="fluid" icon='lock' iconPosition='left' placeholder='Password' type='password'/>
 
-                  <Button type="submit" color='teal' fluid="fluid" size='large'>
+                  <Button type="submit" color='grey' fluid="fluid" size='large'>
                     Login
                   </Button>
                 </Segment>
@@ -108,41 +88,8 @@ class SignOn extends React.Component {
           </Grid>
         </div>
 
-      // </div>
     )} else {
       return (
-        // <div>
-        // <Form onSubmit={this.onNewUserSubmit}>
-        //   <Form.Field>
-        //     <label>Name</label>
-        //     <input name="name" placeholder='Username'/>
-        //   </Form.Field>
-        //
-        //   <Form.Field>
-        //     <label>Email</label>
-        //     <input name="email" placeholder='Email'/>
-        //   </Form.Field>
-        //
-        //   <Form.Field>
-        //     <label>Profile Pic URL</label>
-        //     <input name="pic" placeholder='Profile Picture'/>
-        //   </Form.Field>
-        //
-        //   <Form.Field>
-        //     <label>Password</label>
-        //     <input name="password" type="password" placeholder='Pasword'/>
-        //   </Form.Field>
-        //
-        //   <Form.Field>
-        //     <Checkbox label='I agree to the Terms and Conditions'/>
-        //   </Form.Field>
-        //
-        //   <Button type='submit'>Create User</Button>
-        //
-        // </Form>
-        // <br/>
-        // <Button onClick={this.onNewUserClick}>
-        //   Existing User Sign-in</Button>
 
           <div className='login-form'>
             <style>
@@ -159,7 +106,7 @@ class SignOn extends React.Component {
               <Grid.Column style={{
                   maxWidth: 450
                 }}>
-                <Header as='h2' color='teal' textAlign='center'>
+                <Header as='h2' color='grey' textAlign='center'>
                   <Icon name='gavel' />
                   Create an account
                 </Header>
@@ -170,7 +117,7 @@ class SignOn extends React.Component {
                     <Form.Input name="password" fluid="fluid" icon='lock' iconPosition='left' placeholder='Password' type='password'/>
                     <Form.Input name="pic" fluid="fluid" icon='user' iconPosition='left' placeholder='Profile Picture'/>
 
-                    <Button type="submit" color='teal' fluid="fluid" size='large'>
+                    <Button type="submit" color='grey' fluid="fluid" size='large'>
                       Sign Up
                     </Button>
                   </Segment>
@@ -179,8 +126,6 @@ class SignOn extends React.Component {
               </Grid.Column>
             </Grid>
           </div>
-
-      // </div>
 
     )
 

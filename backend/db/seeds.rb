@@ -30,15 +30,15 @@ puts "done making users"
 puts "making auctions"
 
 20.times do
-  Auction.create({item_name:Faker::Music.album,item_description:Faker::StarWars.quote, item_pic:"tbd", seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
+  Auction.create({item_pic: 'https://i.kinja-img.com/gawker-media/image/upload/s--ibuVXkAw--/c_scale,f_auto,fl_progressive,q_80,w_800/xszbu9keb6wyag4d4xvd.jpg', item_name:Faker::Music.album,item_description:Faker::StarWars.quote, seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
 end
 
 15.times do
-Auction.create({item_name:Faker::Beer.name,item_description:Faker::BojackHorseman.quote, item_pic:"tbd", seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
+Auction.create({item_pic: 'https://i.kinja-img.com/gawker-media/image/upload/s--ibuVXkAw--/c_scale,f_auto,fl_progressive,q_80,w_800/xszbu9keb6wyag4d4xvd.jpg',item_name:Faker::Beer.name,item_description:Faker::BojackHorseman.quote, seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
 end
 
 20.times do
-  Auction.create({item_name:Faker::Dessert.variety,item_description:Faker::GreekPhilosophers.quote, item_pic:"tbd", seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
+  Auction.create({item_pic: 'https://i.kinja-img.com/gawker-media/image/upload/s--ibuVXkAw--/c_scale,f_auto,fl_progressive,q_80,w_800/xszbu9keb6wyag4d4xvd.jpg',item_name:Faker::Dessert.variety,item_description:Faker::GreekPhilosophers.quote, seller_id:User.all.sample.id, start_date: DateTime.new(2018,10,rand(1..22),4,5,6), end_date: DateTime.new(2018,rand(11..12),rand(1..30),4,5,6)})
 end
 
 puts "done making auctions"

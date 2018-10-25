@@ -28,9 +28,6 @@ const AuctionCard = (props) => {
 
   const tableRow = (bid) => {
     let createDate = new Date(bid.created_at)
-     // debugger
-
-
 
     return (
 
@@ -110,9 +107,10 @@ const AuctionCard = (props) => {
     <Header as='h2' icon="icon" textAlign='center'>
       <Icon name='gavel' circular="circular"/>
       <Header.Content>{props.item.item_name}</Header.Content>
-      <Header.Content as="h3" sub>Description: {props.item.item_description}</Header.Content><br/>
-      <Header.Content as="h3" textAlign="right" sub>Time Remaining: {timeRemaining()}</Header.Content>
     </Header>
+    <Image src={props.item.item_pic} size='medium' centered/>
+      <Header as='h3' textAlign='center'>Description: {props.item.item_description}</Header>
+      <Header as='h3' textAlign='center'>Time Remaining: {timeRemaining()}</Header>
     {renderTable()}
     {renderForm()}
   </Segment>
