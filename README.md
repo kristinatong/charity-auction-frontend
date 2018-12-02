@@ -1,9 +1,17 @@
 # Charity Auction
-> Javascript & React/Redux frontend for Charity Auction, an auction house app for providing funding to charitable causes.
+Javascript & React/Redux frontend for Charity Auction, an auction house app for providing funding to charitable causes.
 
 Backend Ruby on Rails API repo: https://github.com/kristinatong/charity-auction-backend
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+You'll need to set up the back-end server:
+
+* [Charity Auction Back-end](https://github.com/kristinatong/charity-auction-backend)
+
+### Installation
 
 OS X & Linux:
 
@@ -11,11 +19,7 @@ OS X & Linux:
 npm install
 ```
 
-## Usage example
-
-
-
-## Development setup
+### Development setup
 
 ```sh
 npm start
