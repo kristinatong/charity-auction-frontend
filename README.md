@@ -21,25 +21,11 @@ npm install
 npm start
 ```
 
-## Release History
+## Built With
 
-* 0.1.0
-    * First official release
-
-## Meta
-
-Michael Coleman
-
-[https://github.com/mccoleman75225](https://github.com/mccoleman75225)
-
-Andrew Lindner
-
-[https://github.com/rendnil](https://github.com/rendnil)
-
-Kristina Tong
-
-[https://github.com/kristinatong](https://github.com/kristinatong)
-
+* [Ruby on Rails](https://rubyonrails.org/) - Server-side web application framework
+* [SQLite](https://www.sqlite.org/) - Database for Active Record
+* [Bootstrap](https://getbootstrap.com/) - Front-end framework for styling
 
 ## Contributing
 
@@ -48,3 +34,14 @@ Kristina Tong
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Versioning
+
+* 0.1.0
+    * First official release
+
+## Authors
+
+* **Michael Coleman** - [mccoleman75225](https://github.com/mccoleman75225)
+* **Andrew Lindner** - [rendnil](https://github.com/rendnil)
+* **Kristina Tong** - [kristinatong](https://github.com/kristinatong)
