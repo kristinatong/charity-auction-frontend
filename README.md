@@ -7,7 +7,7 @@ Javascript & React/Redux frontend for Charity Auction, an auction house app for 
 
 You'll need to set up the back-end server:
 
-* [Charity Auction Back-end](https://github.com/kristinatong/charity-auction-backend)
+* [Charity Auction Backend](https://github.com/kristinatong/charity-auction-backend)
 
 ### Installation
 
