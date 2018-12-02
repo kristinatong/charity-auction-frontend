@@ -15,11 +15,6 @@ OS X & Linux:
 
 ```sh
 npm install
-```
-
-### Development setup
-
-```sh
 npm start
 ```
 
