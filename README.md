@@ -9,7 +9,7 @@ You'll need to set up the back-end server:
 
 * [Charity Auction Backend](https://github.com/kristinatong/charity-auction-backend)
 
-### Installation
+### Installing
 
 OS X & Linux:
 
