@@ -24,8 +24,9 @@ npm start
 ## Built With
 
 * [Ruby on Rails](https://rubyonrails.org/) - Server-side web application framework
-* [SQLite](https://www.sqlite.org/) - Database for Active Record
-* [Bootstrap](https://getbootstrap.com/) - Front-end framework for styling
+* [PostgreSQL](https://www.postgresql.org/) - Database for Active Record
+* [React](https://reactjs.org/) - Front-end framework
+* [Semantic UI](https://react.semantic-ui.com/) - Front-end framework for styling
 
 ## Contributing
 
